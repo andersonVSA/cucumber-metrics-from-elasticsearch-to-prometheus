@@ -1,0 +1,23 @@
+version: "3"
+services:
+  prometheus:
+    image: braedon/prometheus-es-exporter:0.5.0
+    command: --indices-stats-disable --cluster-health-disable --nodes-stats-disable --verbose -e 'http://elk.dasalabs.com.br:80/'
+    ports:
+      - "9206:9206"
+    volumes:
+      - ./exporter-1.0.cfg:/usr/src/app/exporter.cfg
+    links:
+      - elasticsearch
+  elasticsearch:
+    image: elasticsearch:6.5.2
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+      - discovery.type=single-node
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data
+volumes:
+  esdata1:
+    driver: local
