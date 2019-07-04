@@ -8,17 +8,16 @@ Por sua vez, usamos o `prometheus-es-exporter` para extrair métricas dos docume
 
 ## Como executar fora do jenkins:
 
-$`python3 ./pipeline-shared-librares/utils/regressive_tests/update_json.py`
+$`python3 ./update_json.py`
 
 
-Caso ocorrer algum erro na execução, provavelmente é por falta de exportar alguma das variáveis de exemplo que estão em:
+Caso ocorrer algum erro na execução, provavelmente é por falta de exportar alguma das variáveis de ambiente em:
 
-`devops-tools/pipeline-shared-librares/utils/regressive_tests/test/.env`
-
+`.env`
 
 Caso de algum erro por falta no arquivo json_base que ele usa pra fazer o parse, só criar o arquivo reclamado com base no arquivo em:
 
-`devops-tools/pipeline-shared-librares/utils/regressive_tests/test/fixture/test_failed.json`
+`test_failed.json`
 
 ## Como rodar os testes unitários:
 
